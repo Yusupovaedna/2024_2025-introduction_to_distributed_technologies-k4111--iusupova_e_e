@@ -71,7 +71,8 @@ spec:
 Токен: hvs.U2xpoXWwbfDYqTYgwM6Aj9be
 
 ![alt text](image-6.png)
-
+  
+   
 #### Схема организации контейеров и сервисов
 ![alt text](image-7.png)
 
