@@ -6,7 +6,7 @@ Group: K4111c
 Author: Iusupova Edna Eduardovna  
 Lab: Lab1  
 Date of create: 10.11.2024  
-Date of finished:   
+Date of finished: 04.12.2024   
 
 ## Лабораторная работа №1 "Установка Docker и Minikube, мой первый манифест."  
 #### Описание  
