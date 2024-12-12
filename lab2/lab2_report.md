@@ -63,25 +63,25 @@ spec:
 ```
 ##### Шаг 3. Применение манифестов и развертывание
 Применение манифестов frontend-deployment.yaml и frontend-service.yaml  
-`minikube kubectl -- apply -f C:\Users\yusup\OneDrive\'Рабочий стол'\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab2\frontend-deployment.yaml`
+`minikube kubectl -- apply -f C:\Users\yusup\OneDrive\'Рабочий стол'\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab2\frontend-deployment.yaml`  
 ![alt text](image.png)
 
-`minikube kubectl -- apply -f C:\Users\yusup\OneDrive\'Рабочий стол'\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab2\frontend-service.yaml`
+`minikube kubectl -- apply -f C:\Users\yusup\OneDrive\'Рабочий стол'\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab2\frontend-service.yaml`  
 ![alt text](image-1.png)
 
 
 Проверка состояния сервисов  
-`minikube kubectl get svc`
+`minikube kubectl get svc`  
  ![alt text](image-2.png)
 
 ##### Шаг 3. Запуск в minikube режим проброса портов и подключитение к контейнерам через веб браузер.
 
-`minikube service frontend-service`
+`minikube service frontend-service`  
 
 ##### Шаг 4. Проверка на странице в веб браузере переменных REACT_APP_USERNAME, REACT_APP_COMPANY_NAME и Container name. 
 
-Изменяются ли они? Если да то почему?
-Да, изменяется из-за балансировки между двумя репликами
+Изменяются ли они? Если да то почему?  
+Да, изменяется из-за балансировки между двумя репликами  
 ![alt text](image-4.png)
 ##### Шаг 5. Проверка логов контейнеров
 `minikube kubectl logs frontend-deployment-5db9b775b5-gcztl`  
