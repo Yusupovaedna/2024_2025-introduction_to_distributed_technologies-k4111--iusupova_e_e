@@ -18,66 +18,28 @@ Date of finished:
 #### Выполнение работы
 ##### Шаг 1. Запустить minikube с плагином CNI=calico и режимом работы Multi-Node Clusters, развернуть 2 ноды.
 
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: special-config
-  namespace: default
-data:
-  SPECIAL_LEVEL: very
-  SPECIAL_TYPE: charm
-  REACT_APP_USERNAME: EdnaApp, 
-  REACT_APP_COMPANY_NAME: ITMO 
-  ```
+Запуск кластера с 2 нодами и использованием плагина calico
+`minikube start --driver=docker --network-plugin=cni --cni=calico -p=multinode --nodes 2`
 
-  `minikube kubectl -- apply -f C:\Users\yusup\OneDrive\'Рабочий стол'\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab3\configmap.yaml`  
+  ``  
+  set HTTP_PROXY=http://<proxy hostname:port>
+set HTTPS_PROXY=https://<proxy hostname:port>
+set NO_PROXY=localhost,127.0.0.1,10.96.0.0/12,192.168.59.0/24,192.168.49.0/24,192.168.39.0/24
+
+minikube start
+
 
 
 ##### Шаг 2. Проверить работу CNI плагина Calico и количество нод.
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: frontend-deployment
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: frontend
-  template:
-    metadata:
-      labels:
-        app: frontend
-    spec:
-      containers:
-      - name: frontend
-        image: ifilyaninitmo/itdt-contained-frontend:master
-        envFrom:
-        - configMapRef:
-            name: special-config
-        ports:
-        - containerPort: 8200
-```
-`minikube kubectl -- apply -f C:\Users\yusup\OneDrive\'Рабочий стол'\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab3\frontend-deployment.yaml`  
+Проверка наличия 2 нод
+`minikube kubectl get no`
 
 
 
 ##### Шаг 3. Проверить работу Calico с помощью функции IPAM Plugin.
 
 `minikube service frontend-service`
-
-
-`minikube addons enable ingress`
-
-
-`openssl req -new -newkey rsa:2048 -nodes -keyout mydomainitmo.key -x509 -days 3650 -config "C:\Users\yusup\OneDrive\Рабочий стол\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab3\openssl-san.cnf" -out mydomainitmo.crt`
-
-`openssl x509 -in mydomainitmo.crt -noout -text`  
-
-`minikube kubectl -- create secret tls react-app-edna-tls --cert=mydomainitmo.crt --key=mydomainitmo.key`
-
 
 ##### Шаг 4. Проверить режим IPAM для запущеных ранее нод указать label по признаку стойки или географического расположения (на ваш выбор).
 ##### Шаг 5. Разработать манифест для Calico который бы на основе ранее указанных меток назначал бы IP адреса "подам" исходя из пулов IP адресов которые вы указали в манифесте.
