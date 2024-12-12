@@ -30,7 +30,7 @@ data:
   REACT_APP_USERNAME: EdnaApp, 
   REACT_APP_COMPANY_NAME: ITMO 
   ```
-
+Применение Configmap  
   `minikube kubectl -- apply -f C:\Users\yusup\OneDrive\'Рабочий стол'\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab3\configmap.yaml`  
 
   ![alt text](image-1.png)
@@ -61,26 +61,31 @@ spec:
         ports:
         - containerPort: 8200
 ```
+
 `minikube kubectl -- apply -f C:\Users\yusup\OneDrive\'Рабочий стол'\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab3\frontend-deployment.yaml`  
 
 ![alt text](image.png)
 
+Проверка создания подов  
 `minikube kubectl get po `  
 ![alt text](image-2.png)
 
 ##### Шаг 3. Запуск в minikube режим проброса портов и подключитение к контейнерам через веб браузер. Включение minikube addons enable ingress и генерация TLS сертификата, импортирт сертификата в minikube.
-
+Проброс портов и подключение к сервису  
 `minikube service frontend-service`
 ![alt text](image-3.png)
 
+Включение Ingress для Minikube  
 `minikube addons enable ingress`
 ![alt text](image-4.png)
 
-
+Генерация TLS сертификат mydomainitmo.crt и ключ к нему  
 `openssl req -new -newkey rsa:2048 -nodes -keyout mydomainitmo.key -x509 -days 3650 -config "C:\Users\yusup\OneDrive\Рабочий стол\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab3\openssl-san.cnf" -out mydomainitmo.crt`
 
+Проверка сгенерированного сертификата  
 `openssl x509 -in mydomainitmo.crt -noout -text`  
 
+Создание секрета для использования сгенерированного сертификата в ингрессе  
 `minikube kubectl -- create secret tls react-app-edna-tls --cert=mydomainitmo.crt --key=mydomainitmo.key`
 ![alt text](image-5.png)
 
