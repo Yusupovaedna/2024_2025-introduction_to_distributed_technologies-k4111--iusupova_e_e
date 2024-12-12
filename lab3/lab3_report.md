@@ -89,7 +89,7 @@ spec:
 `minikube kubectl -- create secret tls react-app-edna-tls --cert=mydomainitmo.crt --key=mydomainitmo.key`
 ![alt text](image-5.png)
 
-##### Шаг 4. Создание ingress в minikube, где указан ранее импортированный сертификат, FQDN по которому вы будете заходить и имя сервиса который вы создали ранее.
+##### Шаг 4. Создание ingress в minikube, где указан ранее импортированный сертификат, FQDN по которому будет производиться вход, и имя сервиса,который был создан ранее.
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -135,5 +135,5 @@ spec:
 ![alt text](image-9.png)
    
 #### Схема организации контейеров и сервисов
-
+![alt text](image-10.png)
 
