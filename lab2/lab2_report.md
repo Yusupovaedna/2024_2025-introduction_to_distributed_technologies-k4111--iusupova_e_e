@@ -62,13 +62,16 @@ spec:
       nodePort: 30001 
 ```
 ##### Шаг 3. Применение манифестов и развертывание
+Применение манифестов frontend-deployment.yaml и frontend-service.yaml  
 `minikube kubectl -- apply -f C:\Users\yusup\OneDrive\'Рабочий стол'\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab2\frontend-deployment.yaml`
 ![alt text](image.png)
 
 `minikube kubectl -- apply -f C:\Users\yusup\OneDrive\'Рабочий стол'\DT\2024_2025-introduction_to_distributed_technologies-k4111c-iusupova_e_e\lab2\frontend-service.yaml`
 ![alt text](image-1.png)
 
- minikube kubectl get svc 
+
+Проверка состояния сервисов  
+`minikube kubectl get svc`
  ![alt text](image-2.png)
 
 ##### Шаг 3. Запуск в minikube режим проброса портов и подключитение к контейнерам через веб браузер.
