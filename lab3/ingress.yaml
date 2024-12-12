@@ -7,16 +7,16 @@ metadata:
 spec:
   tls:
   - hosts:
-      - mydomainitmo.com    # Замените на ваш FQDN
-    secretName: react-app-edna-tls  # Имя созданного ранее TLS-секрета
+      - mydomainitmo.com   
+    secretName: react-app-edna-tls 
   rules:
-  - host: mydomainitmo.com  # Укажите ваш FQDN
+  - host: mydomainitmo.com 
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: frontend-service  # Имя вашего сервиса
+            name: frontend-service  
             port:
-              number: 8200            # Порт, который использует ваш сервис
+              number: 8200           
