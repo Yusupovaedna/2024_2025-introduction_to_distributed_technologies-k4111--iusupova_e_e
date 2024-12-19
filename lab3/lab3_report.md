@@ -6,7 +6,7 @@ Group: K4111c
 Author: Iusupova Edna Eduardovna  
 Lab: Lab3  
 Date of create: 07.12.2024  
-Date of finished:   
+Date of finished: 12.12.2024
 
 ## Лабораторная работа №3 "Сертификаты и "секреты" в Minikube, безопасное хранение данных."  
 #### Описание  
