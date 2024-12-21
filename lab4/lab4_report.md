@@ -38,6 +38,7 @@ NAMESPACE     NAME                READY   STATUS    RESTARTS   AGE
 kube-system   calico-node-7b9jv   1/1     Running   0          23m
 kube-system   calico-node-d5d4l   1/1     Running   0          28m
 ```
+##### Шаг 3. Создание IPPool для каждой ноды
 Просмотр cidr в стандартном ippool  
 `kubectl get ippools.crd.projectcalico.org default-ipv4-ippool -o yaml`  
 ```
@@ -97,7 +98,7 @@ rack1-pool   23s
 rack2-pool   23s
 ```
 
-##### Шаг 6. Создать deployment с 2 репликами контейнера ifilyaninitmo/itdt-contained-frontend:master и передать переменные в эти реплики: REACT_APP_USERNAME, REACT_APP_COMPANY_NAME.
+##### Шаг 4. Создать deployment с 2 репликами контейнера ifilyaninitmo/itdt-contained-frontend:master и передать переменные в эти реплики: REACT_APP_USERNAME, REACT_APP_COMPANY_NAME.
 
 Создание манифеста  
 ```yaml
@@ -133,7 +134,7 @@ spec:
 deployment.apps/lab4-deployment created
 ```
 
-##### Шаг 7. Создать сервис, через который будет доступ на эти "поды". Выбор типа сервиса остается на ваше усмотрение.
+##### Шаг 5. Создать сервис, через который будет доступ на эти "поды". Выбор типа сервиса остается на ваше усмотрение.
 Создание манифеста  
 ```yaml
 apiVersion: v1
@@ -158,7 +159,7 @@ spec:
 service/frontend-service-4 created
 ```
 
-##### Шаг 8. Запустить в minikube режим проброса портов и подключитесь к контейнерам через веб браузер.
+##### Шаг 6. Запустить в minikube режим проброса портов и подключитесь к контейнерам через веб браузер.
 
 `minikube kubectl -- port-forward service/frontend-service-4 3000:3000`  
 ```
@@ -170,13 +171,13 @@ Handling connection for 3000
 Handling connection for 3000
 ```
 
-##### Шаг 9. Проверить на странице в веб браузере переменные Container name и Container IP. 
+##### Шаг 7. Проверить на странице в веб браузере переменные Container name и Container IP. 
 ![alt text](image-1.png)
 
 Изменяются ли они? Если да то почему?  
 Каждый раз при создании нового пода Kubernetes назначает ему уникальный IP-адрес из пула
 
-##### Шаг 10. Используя kubectl exec зайти в любой "под" и попинговать "поды" используя FQDN имя соседенего "пода".
+##### Шаг 8. Используя kubectl exec зайти в любой "под" и попинговать "поды" используя FQDN имя соседенего "пода".
 Проверяем, какие поды у нас есть
 `kubectl get pods -o wide`
 ```
