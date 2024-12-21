@@ -21,4 +21,5 @@ spec:
         - name: REACT_APP_COMPANY_NAME
           value: "ITMO"  
         ports:
-        - containerPort: 8100
+        - containerPort: 3000
+
